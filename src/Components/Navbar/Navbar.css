@@ -4,7 +4,6 @@
 }
 
 .navbar-element {
-    border: 1px solid red;
     height: 100%;
     text-align: center;
 }
@@ -12,11 +11,22 @@
 .navbar-element>a {
     text-decoration: none;
     color: white;
+    font-size: x-large;
+    font-weight: bolder;
 }
 .navbar-element>a:hover {
     color: white;
 }
+.navbar-element:hover {
+    color: white;
+    border-bottom: 8px solid white;
+    transition: ease-in 0.2s;
+    font-size: xx-large;
+}
 
+.navbar-link{
+    padding: 20px;
+}
 
 .logo-img{
     display: block;

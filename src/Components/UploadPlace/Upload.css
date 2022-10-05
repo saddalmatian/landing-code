@@ -1,0 +1,19 @@
+
+.upload-logo {
+    height: 50%;
+    padding: 30px;
+}
+
+.upload-img {
+    display: block;
+    max-width: 50%;
+    max-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.upload-text{
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
