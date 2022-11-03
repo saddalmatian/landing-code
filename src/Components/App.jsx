@@ -1,4 +1,4 @@
-import { React, Component } from "react";
+import React,{ Component } from "react";
 import Navbar from "./Navbar/Navbar";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -10,7 +10,6 @@ class App extends Component {
     render() {
         return <div>
             <Navbar />
-            <BrowserRouter>
                 <div>
                     <Routes>
                         <Route path='/' element={<HomePage/>} exact={true} />
@@ -18,7 +17,6 @@ class App extends Component {
                         <Route path='/category' element={<CategoryPage/>} exact={true} />
                     </Routes>
                 </div>
-            </BrowserRouter>
         </div>
     }
 }

@@ -12,16 +12,16 @@
 
 .home-text {
     height: 40%;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 50%;
     text-align: center;
     color: white;
 }
 
 .object-img{
     display: block;
-    max-width: 100%;
+    max-width: 50% !important;
     max-height: 100%;
     margin-left: auto;
     margin-right: auto;

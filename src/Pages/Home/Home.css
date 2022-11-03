@@ -1,0 +1,11 @@
+.character-img{
+    position: absolute;
+    width: 400px;
+    bottom: 10px;
+}
+.wine-glass-img{
+    position: absolute;
+    width: 300px;
+    right: 1px;
+    bottom: 100px;
+}
