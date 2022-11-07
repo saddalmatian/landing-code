@@ -1,11 +1,15 @@
-.character-img{
-    position: absolute;
-    width: 400px;
-    bottom: 10px;
+.warpper-home {
+  margin-top: 90px;
 }
-.wine-glass-img{
-    position: absolute;
-    width: 300px;
-    right: 1px;
-    bottom: 100px;
+
+.character-img {
+  position: absolute;
+  width: 400px;
+  bottom: -90px;
+}
+.wine-glass-img {
+  position: absolute;
+  width: 300px;
+  right: 1px;
+  bottom: -90px;
 }
