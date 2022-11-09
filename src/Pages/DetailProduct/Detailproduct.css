@@ -1,0 +1,27 @@
+.container-detail {
+  margin: 70px;
+  background-color: #fff;
+}
+
+.detail-header {
+  width: 100%;
+  padding: 20px;
+  color: #fff;
+  font-size: 20px;
+  height: 69px;
+  background-color: #2c0581;
+  border: 2px solid #fff;
+}
+
+.contaier-image {
+  border-right: 2px solid #6b6b6b;
+  /* border: 2px solid red; */
+}
+
+.container-information {
+  /* border: 2px solid red; */
+}
+
+.img-product {
+  width: 100%;
+}
