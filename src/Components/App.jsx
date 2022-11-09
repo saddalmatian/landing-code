@@ -20,11 +20,7 @@ class App extends Component {
               exact={true}
             />
             <Route path="/category" element={<CategoryPage />} exact={true} />
-            <Route
-              path="/category-detail-:_id"
-              element={<DetailProduct />}
-              exact={true}
-            />
+            <Route path="/:_id" element={<DetailProduct />} exact={true} />
           </Routes>
         </div>
       </div>

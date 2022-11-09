@@ -7,6 +7,9 @@
   border: 2px solid #fff;
   z-index: 2;
 }
+.board-category-item .image-catergory {
+  width: 100px;
+}
 
 .board-category .board-category-header {
   width: 100%;
