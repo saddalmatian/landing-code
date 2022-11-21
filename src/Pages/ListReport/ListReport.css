@@ -1,0 +1,21 @@
+.main-listreport {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.title-listreport {
+  display: flex;
+  align-items: flex-end;
+}
+
+.main-listreport .title-listreport h2 {
+  color: #fff;
+  padding: 0;
+  margin: 0;
+}
+
+.main-listreport .title-listreport .underline {
+  width: 70%;
+  height: 1px;
+  background-color: #fff;
+}

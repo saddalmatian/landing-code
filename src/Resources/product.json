@@ -1,9 +1,48 @@
 {
     "products": [
+        {   "ID":"1",
+            "PK": "KitchenGadgets",
+            "SK": "BottleOpener",
+            "Description": "A device for removing the metal top from a bottle",
+            "S3Key": "categories/bottle_opener.jpeg",
+            "SubImages": [],
+            "ItemName": "Bottle Opener"
+        },
+        {   
+            "ID":"2",
+            "PK": "KitchenGadgets",
+            "SK": "Spatula",
+            "Description": "An implement with a broad, flat, blunt blade, used for mixing and spreading things, especially in cooking and painting.",
+            "S3Key": "categories/spatula.jpeg",
+            "SubImages": [],
+            "ItemName": "Spatula"
+        },
         {
-            "id": 0,
-            "name": "",
-            "image": "1-carrot-png-image-thumb.pngs"
+            "ID":"3",
+            "PK": "KitchenGadgets",
+            "SK": "Masher",
+            "Description": "A utensil for mashing food",
+            "S3Key": "categories/masher.jpg",
+            "SubImages": [],
+            "ItemName": "Masher"
+        },
+        {   
+            "ID":"4",
+            "PK": "KitchenGadgets",
+            "SK": "Tongs",
+            "Description": "An instrument with two movable arms that are joined at one end, used for picking up and holding things",
+            "S3Key": "categories/tongs.png",
+            "SubImages": [],
+            "ItemName": "Tongs"
+        },
+        {   
+            "ID":"5",
+            "PK": "KitchenGadgets",
+            "SK": "BreadKnife",
+            "Description": "A long knife with a serrated edge, for slicing bread.",
+            "S3Key": "categories/bread_knife.jpg",
+            "SubImages": [],
+            "ItemName": "Bread Knife"
         }
     ]
 }

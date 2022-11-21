@@ -6,7 +6,9 @@ import BottleOpenerTest from "./standard_images/bottle_opener.jpg";
 // drag drop file component
 function DragDropFile() {
   const [Img, setImg] = useState(false);
-  const [Labels, setLabels] = useState(false);
+  const [Labels, setLabels] = useState([]);
+  const [result, setRusult] = useState([]);
+  console.log(result);
   const [Filename, setFilename] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   // drag state
@@ -50,7 +52,7 @@ function DragDropFile() {
     const formData = new FormData();
     formData.append("file", files[0]);
     setFilename(files[0].name);
-    fetch("http://13.211.236.249:8000/upload-img/", {
+    fetch("https://apidev.phantomal.site/dev/upload-img", {
       method: "POST",
       body: formData,
     })
@@ -60,11 +62,69 @@ function DragDropFile() {
         setIsLoading(false);
         setImg(result.s3link);
         setLabels(result.results);
+        setRusult(result.results);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   }
+
+  const ShowResult = result.map((e, i) => {
+    return (
+      <div>
+        <div className="result-box" key={i}>
+          <div className="result-details">
+            <div className="left-image">
+              <img
+                src={e.MainImage}
+                alt="bottleOpener"
+                className="img-result-left"
+              ></img>
+            </div>
+            <div className="right-text">
+              <div className="d-flex justify-content-between">
+                <h4 style={{ marginTop: "10px", marginLeft: "15px" }}>
+                  {e.ItemName}
+                </h4>
+                <button className="btn-report">Report</button>
+              </div>
+              <hr
+                style={{
+                  marginTop: "0px",
+                  marginRight: "10px",
+                }}
+              ></hr>
+              <div className="description-text-right">
+                <h4>Description</h4>
+                <div>{e.Description}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form action="submit">
+          <div className="box-report">
+            <h1
+              style={{
+                display: "inline-block",
+                width: "20%",
+                color: "white",
+              }}
+            >
+              Report
+            </h1>
+            <div className="white-border-report"></div>
+
+            <textarea
+              placeholder="your report is here"
+              className="box-input-report"
+              type="text"
+            />
+          </div>
+          <button type="submit">submit</button>
+        </form>
+      </div>
+    );
+  });
 
   return !Img ? (
     <form
@@ -120,26 +180,7 @@ function DragDropFile() {
           Result
         </h1>
         <div className="white-border"></div>
-        <div className="result-box">
-          <div className="result-details">
-            <div className="left-image">
-              <img
-                src={BottleOpenerTest}
-                alt="bottleOpener"
-                className="img-result-left"
-              ></img>
-            </div>
-            <div className="right-text">
-              <h4 style={{ marginTop: "10px" }}>{Labels}</h4>
-              <hr
-                style={{
-                  marginTop: "0px",
-                  marginRight: "10px",
-                }}
-              ></hr>
-            </div>
-          </div>
-        </div>
+        {ShowResult}
       </div>
     </>
   );

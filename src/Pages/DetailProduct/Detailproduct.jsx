@@ -1,21 +1,15 @@
-// import products from "../../Resources/product.json";
-import { useEffect } from "react";
-import { getProducts } from "../../redux/apicall";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import Navbar from "../../Components/Navbar/Navbar";
 import "./Detailproduct.css";
-import carot from "./carot.png";
+
 function DetailProduct() {
-  const dispatch = useDispatch();
   const product = useSelector((state) => state.products.products);
-  useEffect(() => {
-    getProducts(dispatch);
-  }, [dispatch]);
+
   const id = window.location;
-  console.log(id.href.slice(22, 23));
-  const DetailProduct = product.filter(
-    (e) => e.ID - 1 == id.href.slice(22, 23)
-  );
+  const DetailProduct = product?.filter((e) => {
+    return e.Alias === id.href.slice(22);
+  });
+
   const showDetail = DetailProduct?.map((e, i) => {
     return (
       <div className="row" key={i}>
@@ -33,10 +27,13 @@ function DetailProduct() {
     );
   });
   return (
-    <div className="container container-detail">
-      <div className="row">
-        <div className="detail-header">DETAIL</div>
-        <div>{showDetail}</div>
+    <div>
+      <Navbar />
+      <div className="container container-detail">
+        <div className="row">
+          <div className="detail-header">DETAIL</div>
+          <div>{showDetail}</div>
+        </div>
       </div>
     </div>
   );
