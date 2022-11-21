@@ -1,0 +1,64 @@
+.navbar-admin-page {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 60px;
+  background-color: #4c29cc;
+}
+
+.image-logo-login {
+  height: 100%;
+  position: absolute;
+}
+
+.image-logo-loginsuccess {
+  height: 100%;
+}
+
+.wrapper-admin-workspace {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper-admin-workspace h3 {
+  color: #fff;
+}
+
+.info-user {
+  display: flex;
+}
+.username-admin {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  font-size: 20px;
+  color: #fff;
+  width: 100%;
+}
+
+.icon-user {
+  display: flex;
+  align-items: center;
+  font-size: 35px;
+  color: #fff;
+}
+
+.linevertical {
+  width: 1px;
+  height: 30px;
+  margin-top: 15px;
+  margin: 15px 15px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+
+.icon-logout {
+  display: flex;
+  font-size: 30px;
+  align-items: center;
+  color: #fff;
+  font-weight: 200;
+  padding-right: 20px;
+}

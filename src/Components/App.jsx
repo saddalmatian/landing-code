@@ -5,12 +5,13 @@ import HomePage from "../Pages/Home/Home";
 import InstructionPage from "../Pages/Instruction/Instruction";
 import CategoryPage from "../Pages/Category/Category";
 import DetailProduct from "../Pages/DetailProduct/Detailproduct";
+import Login from "../Pages/Login/Login";
+import ListReport from "../Pages/ListReport/ListReport";
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Navbar />
         <div>
           <Routes>
             <Route path="/" element={<HomePage />} exact={true} />
@@ -19,6 +20,8 @@ class App extends Component {
               element={<InstructionPage />}
               exact={true}
             />
+            <Route path="/admin" element={<Login />} exact={true} />
+            <Route path="/listreport" element={<ListReport />} exact={true} />
             <Route path="/category" element={<CategoryPage />} exact={true} />
             <Route path="/:_id" element={<DetailProduct />} exact={true} />
           </Routes>
