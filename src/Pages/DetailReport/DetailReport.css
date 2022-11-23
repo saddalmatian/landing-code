@@ -1,0 +1,16 @@
+.main-detailreport {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.wrapper-detail-report {
+}
+
+.img-results {
+  height: 100px;
+  background-color: red;
+}
+
+.main-detailreport .img-detail-report {
+  width: 100%;
+}
