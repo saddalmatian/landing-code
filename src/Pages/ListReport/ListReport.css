@@ -1,6 +1,12 @@
+.wrapper-listreport {
+  background-color: #434343;
+  height: 100%;
+}
+
 .main-listreport {
   width: 60%;
   margin: 0 auto;
+  background-color: #434343;
 }
 
 .title-listreport {
@@ -18,4 +24,101 @@
   width: 70%;
   height: 1px;
   background-color: #fff;
+}
+
+.item {
+  border-radius: 5px;
+  width: 60%;
+  height: 180px;
+  margin: 0 auto;
+  background-color: #e5e5e5;
+}
+
+.item .content {
+  display: flex;
+  padding: 35px;
+}
+
+.item .image-item {
+  width: 222px;
+  height: 115px;
+}
+
+.text-item {
+  width: 100%;
+}
+
+.text-item .vertical-line {
+  margin-right: 10px;
+  height: 25px;
+  width: 1px;
+  background-color: #fff;
+}
+
+.calendar-item .day-item {
+  padding-right: 20px;
+}
+.calendar-item .day-item .icon-day {
+  padding-right: 10px;
+}
+.calendar-item .time-item {
+  padding-right: 20px;
+}
+.calendar-item .time-item .icon-time {
+  padding-right: 10px;
+}
+
+.calendar-item p {
+  padding-top: 5px;
+  font-family: Raleway;
+  font-size: 16px;
+  line-height: 19px;
+  font-style: SemiBold;
+  font-weight: 600;
+}
+
+.item .underline {
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  margin-top: -7px;
+}
+
+.paginate-list {
+  border-radius: 5px;
+  display: flex;
+  padding: 0 50px;
+  height: 50px;
+  width: 60%;
+  margin: 30px auto;
+  align-items: center;
+  justify-content: center;
+  background-color: #969892;
+}
+
+.paginate-list li {
+  font-size: 20px;
+  list-style: none;
+  margin: 10px 10px;
+  /* padding: 10px; */
+}
+.selected {
+  background-color: #fff;
+}
+
+.paginate-list li a {
+  padding: 0px 10px;
+}
+
+.selected a {
+  border: 1px solid black;
+  outline: none;
+  padding: 0px 10px;
+  /* border: 1px solid red; */
+}
+
+.footer {
+  width: 100%;
+  height: 150px;
+  background-color: #434343;
 }

@@ -3,6 +3,7 @@ import iconStroke from "./Icon (Stroke).png";
 import image1 from "./image1.png";
 import Navbar from "../../Components/Navbar/Navbar";
 import image2 from "./image2.png";
+import image3 from "./272848f9a97b6a13e6b755db35e357da.png";
 function Instruction(props) {
   return (
     <div>
@@ -64,11 +65,7 @@ function Instruction(props) {
               if the result returned was not correct.
             </div>
             <div className="instruction-image">
-              <img
-                className="image-item"
-                src="https://s3-alpha-sig.figma.com/img/13bf/82dc/272848f9a97b6a13e6b755db35e357da?Expires=1669593600&Signature=CijdO4Fb2P1WTu0iLuAHzPorZTCt2GiPpWRZBxLHBymRDqq7gBhCPWtzLHMNfD5BwGH98wQz8suA9KSMzJlY9V~NWnowe8gjYAxIZ5RLHy5Y1ZvW~wAB9oquTXj1N729lLZV4tg~VAAkXaHmli6IWDcfHZnWUmdGL9YNafI~RhRNnvKdIFbxuGQ4T60OTgrn3QCHemKSb0H3xoa6ZgWRDEIkChdsSpMeW6eSkIRLn05qSaKpRvL5MONUWOc~KWU-hTxTyJSeMCCRLJbi7kV8O2Qr34rCU42YkThJt60U1kDpC51-inH9-kaMeNHBk2lakpMYwAngRhGOt31UET6XCw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                alt=""
-              />
+              <img className="image-item" src={image3} alt="" />
             </div>
           </div>
         </div>

@@ -1,20 +1,19 @@
-import logo from "./Logo.png";
 import { useState } from "react";
 import "./Login.css";
 import { loginredux } from "../../redux/apicall";
 import { useDispatch } from "react-redux";
+// import { useSelector } from "react-redux";
 import NavbarAdmin from "../../Components/Navbaradmin/Navbaradmin";
 function Login() {
   const dispatch = useDispatch();
   const [loginForm, setLoginForm] = useState({
-    email: "",
+    username: "",
     password: "",
   });
-
-  const { email, password } = loginForm;
+  // const user = useSelector((state) => state.user);
+  // const [{ username, password }] = loginForm;
   const onChangeLoginForm = (event) =>
     setLoginForm({ ...loginForm, [event.target.name]: event.target.value });
-
   const Login = async (event) => {
     event.preventDefault();
     try {
@@ -35,7 +34,7 @@ function Login() {
         </h3>
       </div>
       <div className="body-login">
-        <div action="submit" className="form-login">
+        <div className="form-login">
           <div className="image-login-left">
             <img
               className="image-login"
@@ -43,19 +42,19 @@ function Login() {
               alt=""
             />
           </div>
-          <div className="input-login">
+          <form action="submit" className="input-login">
             <div className="py-4">
               <label className="py-2" htmlFor="email">
-                Email
+                Username
               </label>
               <br />
               <input
                 onChange={onChangeLoginForm}
                 className="w-100 input-type"
                 type="text"
-                name="email"
-                id="email"
-                placeholder="Enter your Email"
+                name="username"
+                id="username"
+                placeholder="Enter your username"
               />
             </div>
             <div>
@@ -75,7 +74,7 @@ function Login() {
             <button className="my-3 btn-login-submit" onClick={Login}>
               Login
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
