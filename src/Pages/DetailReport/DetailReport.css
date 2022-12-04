@@ -1,16 +1,139 @@
 .main-detailreport {
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
 }
 
 .wrapper-detail-report {
+  background-color: #434343;
+  padding-bottom: 70px;
 }
 
 .img-results {
-  height: 100px;
-  background-color: red;
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
 }
 
-.main-detailreport .img-detail-report {
+.img-customer {
+  background-color: #fff;
+  margin: 0 30px;
+  height: 100%;
+}
+
+.img-result-system {
+  background-color: #fff;
+}
+
+.main-detailreport .img-customer .img-detail-report {
+  padding-left: 30px;
+  padding-bottom: 20px;
+  padding-right: 30px;
+  margin: 0 auto;
   width: 100%;
 }
+
+.main-detailreport .img-result-system .img-detail-report {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.download-image {
+  padding-right: 30px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.download-image button {
+  font-family: Open Sans;
+  font-style: SemiBold;
+  font-size: 20px;
+  line-height: 22px;
+  background-color: #0d20c9;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.download-image button:hover {
+  color: rgb(149, 149, 149);
+}
+
+.img-results p {
+  font-weight: 700;
+  font-family: Raleway;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 16px;
+  padding-top: 30px;
+  padding-left: 30px;
+}
+
+/* main body reuslt */
+.main-body-result {
+  height: 100vh;
+  background-color: #fff;
+}
+
+.content-report {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.item-detail {
+  padding: 10px;
+  width: 100%;
+  background-color: #e5e5e5;
+}
+
+.item-detail .image-item-reuslt {
+  border-style: dashed solid;
+  padding: 10px;
+  border: 1px solid #fff;
+}
+
+.item-detail .image-item-reuslt img {
+  width: 130px;
+  height: 150px;
+}
+
+.description-result {
+  font-size: 18px;
+  font-family: Raleway;
+  font-style: Regular;
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 10px 20px;
+}
+
+.image-item-reuslt .under-line-report {
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+}
+
+.description-result .underline-result {
+  width: 100%;
+  height: 1px;
+  background-color: #434343;
+  opacity: 0.2;
+}
+
+.des-report {
+  font-size: 18px;
+  font-family: Raleway;
+  font-style: Regular;
+}
+
+/* 
+Font family: Raleway
+Font style: Regular
+Font size: 16px
+Line height: 19px
+Line height: 100%
+Align: Left
+Vertical align: Top */

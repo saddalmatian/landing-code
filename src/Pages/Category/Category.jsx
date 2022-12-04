@@ -1,7 +1,6 @@
 import "./Category.css";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Product from "../../Resources/product.json";
 import { useEffect } from "react";
 import { getProducts } from "../../redux/apicall";
 import { useDispatch } from "react-redux";

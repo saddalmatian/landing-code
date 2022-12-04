@@ -1,20 +1,66 @@
 import { useRef, useState } from "react";
 import "./DragDrop.css";
 import UploadIcon from "./Icon (Stroke).png";
+import { publicRequest } from "../../requestmethod";
 import BottleOpenerTest from "./standard_images/bottle_opener.jpg";
-
+import { getProducts } from "../../redux/apicall";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { ProductsSlice } from "../../redux/ProductRedux";
+import { useNavigate } from "react-router-dom";
 // drag drop file component
 function DragDropFile() {
+  let navigate = useNavigate();
+  const ChangeRouteDetail = (_id) => {
+    let path = `/${_id}`;
+    navigate(path);
+  };
+  const dispatch = useDispatch();
+  const catergory = useSelector((product) => product.products.products);
   const [Img, setImg] = useState(false);
   const [Labels, setLabels] = useState([]);
   const [result, setRusult] = useState([]);
-  console.log(result);
+  const [Item, setItem] = useState([]);
+  const [Dis, setDis] = useState(false);
+
   const [Filename, setFilename] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   // drag state
   const [dragActive, setDragActive] = useState(false);
   // ref
   const inputRef = useRef(null);
+  /// post report
+
+  const [ReportForm, setReportForm] = useState({});
+  const onChangeReportForm = (e, id) => {
+    const value = e.target.value;
+    if (value.length > 0) {
+      const ButtonReport = document.getElementById(`button-report-${id}`);
+      ButtonReport.removeAttribute("disabled", true);
+    } else {
+      const ButtonReport = document.getElementById(`button-report-${id}`);
+      ButtonReport.setAttribute("disabled", true);
+    }
+    const TextReport = document.getElementById(`form-text-${id}`).value;
+    return setReportForm({
+      ...ReportForm,
+      [e.target.name]: TextReport,
+      ori_image_s3_key: Filename,
+      s3key_detected_img: result.s3key_detected_img,
+      item_reported:
+        Item[id].ItemName === "Bread Knife"
+          ? "bread_knife"
+          : "false" && Item[id].ItemName === "Masher"
+          ? "masher"
+          : "false" && Item[id].ItemName === "Bottle Opener"
+          ? "bottle_opener"
+          : "false" && Item[id].ItemName === "Tongs"
+          ? "tongs"
+          : "false" && Item[id].ItemName === "Spatula"
+          ? "spatula"
+          : "false",
+    });
+  };
 
   // handle drag events
   const handleDrag = function (e) {
@@ -58,21 +104,96 @@ function DragDropFile() {
     })
       .then((response) => response.json())
       .then((result) => {
+        getProducts(dispatch);
+        console.log(result);
         console.log("Success:", result);
         setIsLoading(false);
         setImg(result.s3link);
         setLabels(result.results);
-        setRusult(result.results);
+        setItem(result.results);
+        setRusult(result);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   }
 
-  const ShowResult = result.map((e, i) => {
+  const HandleReport = (id) => {
+    const FormReport = document.getElementById(`form-report-${id}`);
+    FormReport.classList.toggle("open");
+    const ButtonReport = document.getElementById(`button-report-${id}`);
+    ButtonReport.setAttribute("disabled", true);
+  };
+
+  const HandleSubmitFormReport = async (id) => {
+    const Report = async () => {
+      const report = publicRequest
+        .post(
+          `/report/?ori_image_s3_key=${ReportForm.ori_image_s3_key}&s3key_detected_img=${ReportForm.s3key_detected_img}&message=${ReportForm.message}&item_reported=${ReportForm.item_reported}`
+        )
+        .then((res) => {
+          if (res.statusText === "OK") {
+            const alert = document.getElementById(`alert-message-success${id}`);
+            alert.style.display = "block";
+            setTimeout(() => {
+              alert.style.display = "none";
+            }, 4000);
+            const btnReport = document.getElementById("btn-report");
+            btnReport.style.display = "none";
+            const inputReport = document.getElementById(`form-report-${id}`);
+            inputReport.style.display = "none";
+          }
+          const TextReport = document.getElementById(`form-text-${id}`);
+          TextReport.value = "";
+        })
+        .catch((err) => {
+          if (err.response.status === 422) {
+            const alert = document.getElementById(`alert-message-failed${id}`);
+            alert.style.display = "block";
+            setTimeout(() => {
+              alert.style.display = "none";
+            }, 4000);
+          }
+        });
+    };
+    Report();
+  };
+
+  console.log(catergory);
+
+  const ShowInformationRelated = catergory
+    .filter((e) => e.ID !== Item[0]?.ID)
+    .map((e, i) => {
+      return (
+        <div
+          key={i}
+          className="item-image"
+          onClick={() => ChangeRouteDetail(e.Alias)}
+        >
+          <img className="image-related" src={e.MainImages} alt="" />
+        </div>
+      );
+    });
+
+  const ShowResult = Item.map((e, id) => {
     return (
-      <div>
-        <div className="result-box" key={i}>
+      <div key={id}>
+        <div
+          className="alert-message-success"
+          id={"alert-message-success" + `${id}`}
+        >
+          <strong>
+            Successfully report to the Admin, we will re-train the model for
+            more accuracy action.
+          </strong>
+        </div>
+        <div
+          className="alert-message-failed"
+          id={"alert-message-failed" + `${id}`}
+        >
+          <strong> Your report can't be executed !</strong>
+        </div>
+        <div className="result-box">
           <div className="result-details">
             <div className="left-image">
               <img
@@ -86,7 +207,13 @@ function DragDropFile() {
                 <h4 style={{ marginTop: "10px", marginLeft: "15px" }}>
                   {e.ItemName}
                 </h4>
-                <button className="btn-report">Report</button>
+                <button
+                  onClick={() => HandleReport(id)}
+                  id="btn-report"
+                  className="btn-report"
+                >
+                  Report
+                </button>
               </div>
               <hr
                 style={{
@@ -101,7 +228,7 @@ function DragDropFile() {
             </div>
           </div>
         </div>
-        <form action="submit">
+        <div className="form-report" id={"form-report-" + `${id}`}>
           <div className="box-report">
             <h1
               style={{
@@ -115,13 +242,22 @@ function DragDropFile() {
             <div className="white-border-report"></div>
 
             <textarea
+              onChange={(e) => onChangeReportForm(e, id)}
               placeholder="your report is here"
               className="box-input-report"
               type="text"
+              id={"form-text-" + `${id}`}
+              name="message"
             />
           </div>
-          <button type="submit">submit</button>
-        </form>
+          <button
+            id={`button-report-` + `${id}`}
+            type="submit"
+            onClick={() => HandleSubmitFormReport(id)}
+          >
+            submit
+          </button>
+        </div>
       </div>
     );
   });
@@ -181,6 +317,18 @@ function DragDropFile() {
         </h1>
         <div className="white-border"></div>
         {ShowResult}
+        <div className="my-4">
+          <h1
+            style={{
+              display: "inline-block",
+              padding: "20px 0",
+              color: "white",
+            }}
+          >
+            Information Related
+          </h1>
+          <div className="information-related">{ShowInformationRelated}</div>
+        </div>
       </div>
     </>
   );
