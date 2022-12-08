@@ -25,9 +25,6 @@ class Navbar extends Component {
               <div className="navbar-link">
                 <NavLink to="/category" end>Category</NavLink>
               </div>
-              <div className="navbar-link">
-                <NavLink to="/categorys" end>Number 1</NavLink>
-              </div>
             </div>
           </div>
         </Container>
