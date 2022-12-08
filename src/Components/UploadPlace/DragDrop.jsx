@@ -2,11 +2,9 @@ import { useRef, useState } from "react";
 import "./DragDrop.css";
 import UploadIcon from "./Icon (Stroke).png";
 import { publicRequest } from "../../requestmethod";
-import BottleOpenerTest from "./standard_images/bottle_opener.jpg";
 import { getProducts } from "../../redux/apicall";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { ProductsSlice } from "../../redux/ProductRedux";
 import { useNavigate } from "react-router-dom";
 // drag drop file component
 function DragDropFile() {
@@ -99,7 +97,7 @@ function DragDropFile() {
     formData.append("file", files[0]);
     setFilename(files[0].name);
     fetch(
-      "https://thesisloadbalancer-482548701.ap-southeast-2.elb.amazonaws.com/upload-img",
+      "https://apidev.phantomal.site/upload-img/",
       {
         method: "POST",
         body: formData,
