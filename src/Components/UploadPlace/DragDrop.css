@@ -215,6 +215,14 @@
   display: none;
 }
 
+.alert-result-failed {
+  padding: 20px;
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  display: none;
+}
+
 .alert-message-failed {
   padding: 20px;
   background-color: red;

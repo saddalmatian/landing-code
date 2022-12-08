@@ -25,7 +25,7 @@ function Category(props) {
         className="board-category-item"
       >
         <img className="image-catergory" src={e.MainImages} alt="" />
-        <div>{e.ItemName}</div>
+        <div className="text-caterogy">{e.ItemName}</div>
       </div>
     );
   });
