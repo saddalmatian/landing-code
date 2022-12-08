@@ -23,7 +23,7 @@ export const getProducts = async (dispatch) => {
   try {
     const GetProduct = async () => {
       publicRequest
-        .get("/categories")
+        .get("/categories/")
         .then((res) => {
           dispatch(getProductsSuccess(res.data));
         })
