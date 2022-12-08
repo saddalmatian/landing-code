@@ -51,14 +51,14 @@ function DragDropFile() {
         Item[id].ItemName === "Bread Knife"
           ? "bread_knife"
           : "false" && Item[id].ItemName === "Masher"
-          ? "masher"
-          : "false" && Item[id].ItemName === "Bottle Opener"
-          ? "bottle_opener"
-          : "false" && Item[id].ItemName === "Tongs"
-          ? "tongs"
-          : "false" && Item[id].ItemName === "Spatula"
-          ? "spatula"
-          : "false",
+            ? "masher"
+            : "false" && Item[id].ItemName === "Bottle Opener"
+              ? "bottle_opener"
+              : "false" && Item[id].ItemName === "Tongs"
+                ? "tongs"
+                : "false" && Item[id].ItemName === "Spatula"
+                  ? "spatula"
+                  : "false",
     });
   };
 
@@ -253,6 +253,7 @@ function DragDropFile() {
           <button
             id={`button-report-` + `${id}`}
             type="submit"
+            className="btn-submit-report"
             onClick={() => HandleSubmitFormReport(id)}
           >
             submit
@@ -300,13 +301,18 @@ function DragDropFile() {
   ) : (
     <>
       <div className="result-img-div">
-        <img src={Img} alt="resultImg" className="result-img" />
+        <div className="result-img-content">
+          <div className="img-wrap">
+            <img src={Img} alt="resultImg" className="result-img" />
+          </div>
+        </div>
         <p>
-          <b>Uploaded</b> <u>{Filename}</u>
+          <b>Uploaded:</b> <u>{Filename}</u>
         </p>
       </div>
       <div className="result-text-div">
         <h1
+          className="mb-0"
           style={{
             display: "inline-block",
             width: "20%",

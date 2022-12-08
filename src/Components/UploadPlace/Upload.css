@@ -17,6 +17,13 @@
     margin-right: auto;
     text-align: center;
 }
+
+.upload-text h2 {
+    font-size: 18px;
+    letter-spacing: 0.01rem;
+    margin-bottom: 0;
+}
+
 .upload-place{
     margin-bottom: 40px;
 }
