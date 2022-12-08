@@ -2,9 +2,11 @@ import { useRef, useState } from "react";
 import "./DragDrop.css";
 import UploadIcon from "./Icon (Stroke).png";
 import { publicRequest } from "../../requestmethod";
+import BottleOpenerTest from "./standard_images/bottle_opener.jpg";
 import { getProducts } from "../../redux/apicall";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { ProductsSlice } from "../../redux/ProductRedux";
 import { useNavigate } from "react-router-dom";
 // drag drop file component
 function DragDropFile() {
@@ -49,14 +51,14 @@ function DragDropFile() {
         Item[id].ItemName === "Bread Knife"
           ? "bread_knife"
           : "false" && Item[id].ItemName === "Masher"
-            ? "masher"
-            : "false" && Item[id].ItemName === "Bottle Opener"
-              ? "bottle_opener"
-              : "false" && Item[id].ItemName === "Tongs"
-                ? "tongs"
-                : "false" && Item[id].ItemName === "Spatula"
-                  ? "spatula"
-                  : "false",
+          ? "masher"
+          : "false" && Item[id].ItemName === "Bottle Opener"
+          ? "bottle_opener"
+          : "false" && Item[id].ItemName === "Tongs"
+          ? "tongs"
+          : "false" && Item[id].ItemName === "Spatula"
+          ? "spatula"
+          : "false",
     });
   };
 
@@ -96,23 +98,26 @@ function DragDropFile() {
     const formData = new FormData();
     formData.append("file", files[0]);
     setFilename(files[0].name);
-    fetch(
-      "https://apidev.phantomal.site/upload-img/",
-      {
-        method: "POST",
-        body: formData,
-      }
-    )
+    fetch("https://apidev.phantomal.site/upload-img", {
+      method: "POST",
+      body: formData,
+    })
       .then((response) => response.json())
       .then((result) => {
         getProducts(dispatch);
         console.log(result);
         console.log("Success:", result);
+
         setIsLoading(false);
         setImg(result.s3link);
         setLabels(result.results);
         setItem(result.results);
         setRusult(result);
+        if (result.results.length === 0) {
+          const alert = document.getElementById("alert-result-failed");
+          console.log(alert);
+          alert.style.display = "block";
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -133,7 +138,7 @@ function DragDropFile() {
           `/report/?ori_image_s3_key=${ReportForm.ori_image_s3_key}&s3key_detected_img=${ReportForm.s3key_detected_img}&message=${ReportForm.message}&item_reported=${ReportForm.item_reported}`
         )
         .then((res) => {
-          if (res.statusText === "OK") {
+          if (res.status === 200) {
             const alert = document.getElementById(`alert-message-success${id}`);
             alert.style.display = "block";
             setTimeout(() => {
@@ -162,6 +167,7 @@ function DragDropFile() {
 
   const ShowInformationRelated = catergory
     .filter((e) => e.ID !== Item[0]?.ID)
+    .slice(0, 3)
     .map((e, i) => {
       return (
         <div
@@ -192,6 +198,7 @@ function DragDropFile() {
             more accuracy action.
           </strong>
         </div>
+
         <div
           className="alert-message-failed"
           id={"alert-message-failed" + `${id}`}
@@ -281,6 +288,7 @@ function DragDropFile() {
         multiple={true}
         onChange={handleChange}
       />
+
       <label
         id="label-file-upload"
         htmlFor="input-file-upload"
@@ -293,6 +301,7 @@ function DragDropFile() {
           <h2>{isLoading ? "Loading" : "Drag and drop or browse your file"}</h2>
         </div>
       </label>
+
       {dragActive && (
         <div
           id="drag-file-element"
@@ -327,6 +336,9 @@ function DragDropFile() {
           Result
         </h1>
         <div className="white-border"></div>
+        <div className="alert-result-failed" id="alert-result-failed">
+          <strong>Not Found, Pls try again</strong>
+        </div>
         {ShowResult}
         <div className="my-4">
           <h1

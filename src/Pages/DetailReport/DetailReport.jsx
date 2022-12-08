@@ -22,7 +22,7 @@ function DetailReport() {
     Getdeital();
   }, [sk, dispatch]);
 
-  const ShowReport = report.ItemsReporteds.map((e, i) => {
+  const ShowReport = report.ItemsReporteds?.map((e, i) => {
     console.log(e);
     return (
       <div className="main-body-result py-3" key={i}>
