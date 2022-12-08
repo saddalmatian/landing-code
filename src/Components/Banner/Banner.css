@@ -7,16 +7,25 @@
 }
 
 .home-page {
-    height: 60%;
+    width: 65%;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .home-text {
-    height: 40%;
     margin-left: auto !important;
     margin-right: auto !important;
     width: 50%;
     text-align: center;
     color: white;
+}
+
+.home-text h1 {
+    font-size: 32px;
+    line-height: 22px;
+    letter-spacing: 0.01rem;
+    margin-top: 20px;
+    margin-bottom: 0;
 }
 
 .object-img{

@@ -1,5 +1,5 @@
 #form-file-upload {
-  height: 16rem;
+  height: 12rem;
   /* width: 28rem; */
   max-width: 100%;
   text-align: center;
@@ -17,10 +17,12 @@
   align-items: center;
   justify-content: center;
   border-radius: 15px;
-  background-color: #4c29cc;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='15' ry='15' stroke='white' stroke-width='4' stroke-dasharray='10%2c20' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  background-color: #212134;
+  /* background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='15' ry='15' stroke='white' stroke-width='4' stroke-dasharray='10%2c20' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e"); */
   margin-left: auto;
   margin-right: auto;
+  cursor: pointer;
+  border: 2px dashed #32324d;
 }
 
 #label-file-upload.drag-active {
@@ -51,27 +53,48 @@
 }
 
 .result-img-div {
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: white;
-  padding: 10px;
-  border-radius: 10px;
   margin-bottom: 40px;
 }
 
-.result-img {
+.result-img-content {
+  width: 500px;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.result-img-content .img-wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.img-wrap .result-img {
   display: block;
   margin-left: auto;
   margin-right: auto;
   object-fit: contain;
   width: 100%;
+  height: 100%;
+}
+
+.result-img-div > p {
+  margin-top: 12px;
+  text-align: center;
+  margin-bottom: 0;
+  color: #fff;
 }
 
 .result-text-div {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+
+.result-text-div h1 {
+  font-size: 18px;
 }
 
 .white-border {
@@ -145,6 +168,17 @@
 /* box-report */
 
 .box-report {
+  margin-top: 20px;
+}
+
+.box-report > textarea {
+  border-radius: 10px;
+  padding: 12px;
+  outline: none;
+  color: #fff;
+  background-color: #212134;
+  margin-top: 12px;
+  border-color: #32324d;
 }
 
 .box-input-report {
@@ -165,6 +199,11 @@
 
 .form-report.open {
   display: block;
+}
+
+.form-report .btn-submit-report {
+  border-radius: 8px;
+  padding: 8px;
 }
 
 /* alert messgae */

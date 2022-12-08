@@ -10,7 +10,7 @@ import "./Home.css";
 function Home() {
   return (
     <div className="wrapper-home">
-      <Navbar />1
+      <Navbar />
       <img src={Character} alt="character" className="character-img"></img>
       <img src={WineGlass} alt="wineGlass" className="wine-glass-img"></img>
       <Banner />

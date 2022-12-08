@@ -1,29 +1,36 @@
 import { React, Component } from "react";
 import "./Navbar.css";
 import Logo from "./Logo.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 class Navbar extends Component {
   render() {
     return (
       <div className="wrapper-navbar">
-        <div className="d-flex navbar justify-content-around">
-          <div className="navbar-element">
-            <img className="logo-img" src={Logo} alt="Logo"></img>{" "}
+        <Container>
+          <div className="navbar d-flex">
+            <div className="logo-wrap">
+              <Link to="/" className="logo-link">
+                <img className="logo-img" src={Logo} alt="Logo" />
+              </Link>
+            </div>
+            <div className="navbar-list-wrap d-flex align-items-center">
+              <div className="navbar-link">
+                <NavLink to="/" end>Home</NavLink>
+              </div>
+              <div className="navbar-link">
+                <NavLink to="/instruction" end>Instruction</NavLink>
+              </div>
+              <div className="navbar-link">
+                <NavLink to="/category" end>Category</NavLink>
+              </div>
+              <div className="navbar-link">
+                <NavLink to="/categorys" end>Number 1</NavLink>
+              </div>
+            </div>
           </div>
-          <div className="navbar-element navbar-link">
-            <Link to="/">Home</Link>{" "}
-          </div>
-          <div className="navbar-element navbar-link">
-            <Link to="/instruction">Instruction</Link>
-          </div>
-          <div className="navbar-element navbar-link">
-            <Link to="/category">Category</Link>
-          </div>
-          <div className="navbar-element navbar-link">
-            <Link to="/categorys">Number 1</Link>
-          </div>
-        </div>
+        </Container>
       </div>
     );
   }
