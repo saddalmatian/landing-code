@@ -17,13 +17,19 @@ class Navbar extends Component {
             </div>
             <div className="navbar-list-wrap d-flex align-items-center">
               <div className="navbar-link">
-                <NavLink to="/" end>Home</NavLink>
+                <NavLink to="/" end>
+                  Home
+                </NavLink>
               </div>
               <div className="navbar-link">
-                <NavLink to="/instruction" end>Instruction</NavLink>
+                <NavLink to="/instruction" end>
+                  Instruction
+                </NavLink>
               </div>
               <div className="navbar-link">
-                <NavLink to="/category" end>Category</NavLink>
+                <NavLink to="/category" end>
+                  Category
+                </NavLink>
               </div>
             </div>
           </div>

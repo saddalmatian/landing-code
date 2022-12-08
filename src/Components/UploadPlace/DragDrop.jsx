@@ -98,10 +98,13 @@ function DragDropFile() {
     const formData = new FormData();
     formData.append("file", files[0]);
     setFilename(files[0].name);
-    fetch("https://apidev.phantomal.site/dev/upload-img", {
-      method: "POST",
-      body: formData,
-    })
+    fetch(
+      "https://thesisloadbalancer-482548701.ap-southeast-2.elb.amazonaws.com/upload-img",
+      {
+        method: "POST",
+        body: formData,
+      }
+    )
       .then((response) => response.json())
       .then((result) => {
         getProducts(dispatch);
@@ -159,8 +162,6 @@ function DragDropFile() {
     Report();
   };
 
-  console.log(catergory);
-
   const ShowInformationRelated = catergory
     .filter((e) => e.ID !== Item[0]?.ID)
     .map((e, i) => {
@@ -174,6 +175,12 @@ function DragDropFile() {
         </div>
       );
     });
+
+  const HandleChangeResultIMG = () => {
+    const id = catergory.filter((e) => e.ID === Item[0].ID);
+    let path = `/${id[0]?.Alias}`;
+    navigate(path);
+  };
 
   const ShowResult = Item.map((e, id) => {
     return (
@@ -195,7 +202,7 @@ function DragDropFile() {
         </div>
         <div className="result-box">
           <div className="result-details">
-            <div className="left-image">
+            <div className="left-image" onClick={HandleChangeResultIMG}>
               <img
                 src={e.MainImage}
                 alt="bottleOpener"

@@ -10,27 +10,30 @@ function DetailProduct() {
     return e.Alias === id.href.slice(22);
   });
 
-  const showDetail = DetailProduct?.map((e, i) => {
-    console.log(e);
+  const ShowImgaeThumbnai = DetailProduct[0]?.SubImages?.map((img, i) => {
     return (
-      <div className="row" key={i}>
-        <div className="col-6 contaier-image">
-          <img className="img-product" src={e.MainImages} alt="" />
-          {e.SubImages.map((img, i) => {
-            console.log(img);
-            return (
-              <div>
-                <img src={img} alt="" />
-              </div>
-            );
-          })}
+      <div key={i} className="px-2 py-2">
+        <img className="item-img" src={img} alt="" />
+      </div>
+    );
+  });
+
+  const showDetail = DetailProduct?.map((e, i) => {
+    return (
+      <div className="d-flex" key={i}>
+        <div className="contaier-image">
+          <div className="main-img">
+            <img className="img-product" src={e.MainImages} alt="" />
+          </div>
+          <div>
+            <div className="image-thumbnail">{ShowImgaeThumbnai}</div>
+          </div>
         </div>
-        <div className="col-6 container-information">
-          <div key={i}>
-            <h2>Information</h2>
-            <div className="underline"></div>
+        <div className="container-information">
+          <div key={i} className="px-2">
             <h2>{e.ItemName}</h2>
-            <h5>{e.Description}</h5>
+            <div className="underline"></div>
+            <p>{e.Description}</p>
           </div>
         </div>
       </div>
@@ -39,7 +42,7 @@ function DetailProduct() {
   return (
     <div>
       <Navbar />
-      <div className="container container-detail">
+      <div className="container-detail">
         <div className="row">
           <div className="detail-header">DETAIL</div>
           <div>{showDetail}</div>
