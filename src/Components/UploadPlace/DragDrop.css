@@ -220,7 +220,7 @@
   background-color: red;
   color: white;
   border-radius: 10px;
-  display: none;
+  /* display: none; */
 }
 
 .alert-message-failed {
