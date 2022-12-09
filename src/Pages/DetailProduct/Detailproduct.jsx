@@ -4,10 +4,9 @@ import "./Detailproduct.css";
 
 function DetailProduct() {
   const product = useSelector((state) => state.products.products);
-  console.log(product);
   const id = window.location;
   const DetailProduct = product?.filter((e) => {
-    return e.Alias === id.href.slice(22);
+    return e.Alias === id.href.slice(27);
   });
 
   const ShowImgaeThumbnai = DetailProduct[0]?.SubImages?.map((img, i) => {

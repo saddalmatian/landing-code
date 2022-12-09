@@ -30,7 +30,7 @@ function DragDropFile() {
   // ref
   const inputRef = useRef(null);
   /// post report
-
+  console.log(Item);
   const [ReportForm, setReportForm] = useState({});
   const onChangeReportForm = (e, id) => {
     const value = e.target.value;
@@ -113,11 +113,6 @@ function DragDropFile() {
         setLabels(result.results);
         setItem(result.results);
         setRusult(result);
-        if (result.results.length === 0) {
-          const alert = document.getElementById("alert-result-failed");
-          console.log(alert);
-          alert.style.display = "block";
-        }
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -335,10 +330,16 @@ function DragDropFile() {
         >
           Result
         </h1>
+        {Item.length === 0 ? (
+          <div className="alert-result-failed" id="alert-result-failed-true">
+            <strong>Not Found, Pls try again</strong>
+          </div>
+        ) : (
+          <div></div>
+        )}
+
         <div className="white-border"></div>
-        <div className="alert-result-failed" id="alert-result-failed">
-          <strong>Not Found, Pls try again</strong>
-        </div>
+
         {ShowResult}
         <div className="my-4">
           <h1
