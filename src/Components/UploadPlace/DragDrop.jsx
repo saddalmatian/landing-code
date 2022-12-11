@@ -334,7 +334,7 @@ function DragDropFile() {
         </h1>
         {Item.length === 0 ? (
           <div className="alert-result-failed" id="alert-result-failed-true">
-            <strong>Not Found, Pls try again</strong>
+            <strong>Not Found, Please try again</strong>
           </div>
         ) : (
           <div></div>
