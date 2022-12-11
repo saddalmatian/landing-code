@@ -250,21 +250,23 @@ function DragDropFile() {
 
             <textarea
               onChange={(e) => onChangeReportForm(e, id)}
-              placeholder="your report is here"
+              placeholder="Your report is here"
               className="box-input-report"
               type="text"
               id={"form-text-" + `${id}`}
               name="message"
             />
           </div>
-          <button
-            id={`button-report-` + `${id}`}
-            type="submit"
-            className="btn-submit-report"
-            onClick={() => HandleSubmitFormReport(id)}
-          >
-            submit
-          </button>
+          <div className="d-flex justify-content-end">
+            <button
+              id={`button-report-` + `${id}`}
+              type="submit"
+              className="btn-submit-report"
+              onClick={() => HandleSubmitFormReport(id)}
+            >
+              Submit
+            </button>
+          </div>
         </div>
       </div>
     );

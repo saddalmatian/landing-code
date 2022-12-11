@@ -22,6 +22,10 @@ function DetailReport() {
     Getdeital();
   }, [sk, dispatch]);
 
+  const HandleDownloadIMG = (url) => {
+    window.open(url, "_blank").focus();
+  };
+
   const ShowReport = report.ItemsReporteds?.map((e, i) => {
     console.log(e);
     return (
@@ -69,7 +73,12 @@ function DetailReport() {
               <p>Image uploaded</p>
               <img className="img-detail-report" src={report?.OriImg} alt="" />
               <div className="download-image">
-                <button className="btn-download-image">DownLoad Image</button>
+                <button
+                  className="btn-download-image"
+                  onClick={() => HandleDownloadIMG(report?.OriImg)}
+                >
+                  Download Image
+                </button>
               </div>
             </div>
             <div className="img-result-system">
